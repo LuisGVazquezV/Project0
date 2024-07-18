@@ -1,6 +1,5 @@
 package com.revature;
 
-import com.revature.controllers.AdoptionController;
 import com.revature.controllers.PetController;
 import com.revature.controllers.UserController;
 import com.revature.utils.ConnectionUtil;
@@ -26,15 +25,10 @@ public class Launcher {
         //Instantiate Controllers
         UserController uc = new UserController();
         PetController pc = new PetController();
-        AdoptionController ac = new AdoptionController();
 
         app.get("/users", uc.getUserHandler);
 
         app.get("/pets", pc.getPetHandler);
-
-
-
-
 
 
     }//end of main

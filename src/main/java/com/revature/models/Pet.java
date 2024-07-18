@@ -2,7 +2,7 @@ package com.revature.models;
 
 public class Pet {
 
-    private int pet_id;
+    private int pet_id_pk;
     private String name;
     private String species;
     private String breed;
@@ -10,13 +10,15 @@ public class Pet {
     private String gender;
     private String adoption_status;
     private String description;
+    private int user_id_fk;
+    private String adoption_date;
 
     //Constructors
     public Pet() {
     }
 
-    public Pet(int pet_id, String name, String species, String breed, int age, String gender, String adoption_status, String description) {
-        this.pet_id = pet_id;
+    public Pet(int pet_id_pk, String name, String species, String breed, int age, String gender, String adoption_status, String description, int user_id_fk, String adoption_date) {
+        this.pet_id_pk = pet_id_pk;
         this.name = name;
         this.species = species;
         this.breed = breed;
@@ -24,16 +26,18 @@ public class Pet {
         this.gender = gender;
         this.adoption_status = adoption_status;
         this.description = description;
+        this.user_id_fk = user_id_fk;
+        this.adoption_date = adoption_date;
     }
 
     //Setters & Getters
 
     public int getPet_id() {
-        return pet_id;
+        return pet_id_pk;
     }
 
     public void setPet_id(int pet_id) {
-        this.pet_id = pet_id;
+        this.pet_id_pk = pet_id;
     }
 
     public String getName() {
@@ -92,20 +96,42 @@ public class Pet {
         this.description = description;
     }
 
+    public int getUser_id_fk() {
+        return user_id_fk;
+    }
+
+    public void setUser_id_fk(int user_id_fk) {
+        this.user_id_fk = user_id_fk;
+    }
+
+    public String getAdoption_date() {
+        return adoption_date;
+    }
+
+    public void setAdoption_date(String adoption_date) {
+        this.adoption_date = adoption_date;
+    }
+
     //toString
+
 
     @Override
     public String toString() {
         return "Pet{" +
-                "pet_id=" + pet_id +
+                "pet_id_pk=" + pet_id_pk +
                 ", name='" + name + '\'' +
                 ", species='" + species + '\'' +
                 ", breed='" + breed + '\'' +
                 ", age=" + age +
-                ", gender=" + gender +
+                ", gender='" + gender + '\'' +
                 ", adoption_status='" + adoption_status + '\'' +
                 ", description='" + description + '\'' +
+                ", user_id_fk=" + user_id_fk +
+                ", adoption_date='" + adoption_date + '\'' +
                 '}';
+    }
+
+    public void setAdoptionStatus(String petStatus) {
     }
 }
 

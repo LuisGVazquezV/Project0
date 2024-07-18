@@ -21,13 +21,16 @@ public class PetDAO implements PetDAOInterface {
                     Pet p = new Pet(
                             rs.getInt("pet_id_pk"),
                             rs.getString("name"),
+                            rs.getString("species"),
                             rs.getString("breed"),
-                            rs.getString("age"),
                             rs.getInt("age"),
                             rs.getString("gender"),
                             rs.getString("adoption_status"),
-                            rs.getString("description")
+                            rs.getString("description"),
+                            rs.getInt("user_id_fk"),
+                            rs.getString("adoption_date")
                     );
+
                     pets.add(p);
                 }
                 return pets;
