@@ -1,7 +1,7 @@
 # Pet Adoption Agency Management System
 
 ## Overview
-The Pet Adoption Agency Management System is a Java-based application designed to manage the operations of a pet adoption agency. It provides functionality for administrators to manage users, pets, adoptions, and other related data through a PostgreSQL database. This README provides an overview of the application's features, setup instructions, and usage guidelines.
+The Pet Adoption Agency Management System is a Java-based application designed to manage the operations of a pet adoption agency. It provides functionality for administrators to manage users and pets through a PostgreSQL database. This README provides an overview of the application's features, setup instructions, and usage guidelines.
 
 ## Features
 - **User Management:**
@@ -10,11 +10,8 @@ The Pet Adoption Agency Management System is a Java-based application designed t
 - **Pet Management:**
   - Add new pets
   - View pets available for adoption
-- **Adoption Management:**
-  - Record pet adoptions
-  - View adoption history
 - **Additional Functionality:**
-  
+  - View pets adopted by a specific user
 
 ## Tech Stack
 - **Java:** Backend API development
@@ -27,21 +24,23 @@ The Pet Adoption Agency Management System is a Java-based application designed t
 To run this application locally, follow these steps:
 
 1. **Clone the Repository:**
-git clone <repository_url>
-cd pet-adoption-agency
+    ```sh
+    git clone <repository_url>
+    cd pet-adoption-agency
+    ```
 
 2. **Database Setup:**
-- Install PostgreSQL and create a database named `PetAgency`.
-- Execute the SQL scripts in `database/PetAgency.sql` to create the necessary tables.
+  - Install PostgreSQL and create a database named `PetAgency`.
+  - Execute the SQL scripts in `database/PetAgency.sql` to create the necessary tables.
 
 3. **Configure Database Connection:**
-- Update the database connection settings in `src/main/java/com.revature/utils/Connection.java` to match your local PostgreSQL setup.
+  - Update the database connection settings in `src/main/java/com.revature/utils/Connection.java` to match your local PostgreSQL setup.
 
 4. **Build and Run the Application:**
-- Compile and run the Java application using your preferred IDE or build tool.
+  - Compile and run the Java application using your preferred IDE or build tool.
 
 5. **Testing Endpoints:**
-- Use Postman to send HTTP requests to the API endpoints for testing.
+  - Use Postman to send HTTP requests to the API endpoints for testing.
 
 ## API Endpoints
 - **GET /users**: Retrieve all users.
@@ -52,8 +51,6 @@ cd pet-adoption-agency
 - **GET /pets**: Retrieve all pets.
 - **GET /pets/{pet_id}**: Retrieve a pet by ID.
 - **POST /pets**: Add a new pet.
-- **POST /adoptions**: Record a new adoption.
-- **GET /adoptions**: Retrieve all adoption records.
 
 ## Usage
 - Ensure the application is running locally.
@@ -61,7 +58,7 @@ cd pet-adoption-agency
 - Verify responses and functionality according to the project requirements.
 
 ## Known Issues
--
+- 
 
 ## Future Enhancements
 - 
