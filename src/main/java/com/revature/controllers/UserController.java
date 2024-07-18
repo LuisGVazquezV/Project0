@@ -15,4 +15,10 @@ public class UserController {
         ctx.status(200);
     };
 
+    public Handler insertUserHandler = ctx -> {
+        User user = ctx.bodyAsClass(User.class);
+        us.insertUser(user);
+        ctx.status(201);
+    };
+
 }
