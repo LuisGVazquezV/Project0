@@ -14,7 +14,7 @@ public class ConnectionUtil {
             System.out.println("Problem Occurred Locating Driver");
         }
 
-        String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=PetAgency";
+        String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=petagency";
         String username = "postgres";
         String password = "password";
 

@@ -21,7 +21,7 @@ public class UserDAO implements UserDAOInterface {
 
             while (rs.next()) {
                 User u = new User(
-                        rs.getInt("user_id"),
+                        rs.getInt("user_id_pk"),
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("email"),
@@ -30,8 +30,10 @@ public class UserDAO implements UserDAOInterface {
                 );
 
                 users.add(u);
+                System.out.println("users: " + users);
             }
             return users;
+
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -2,7 +2,7 @@ package com.revature.models;
 
 public class User {
 
-    private int user_id;
+    private int user_id_pk;
     private String username;
     private String password;
     private String email;
@@ -13,8 +13,8 @@ public class User {
     public User() {
     }
 
-    public User(int user_id, String username, String password, String email, String phone_number, String address) {
-        this.user_id = user_id;
+    public User(int user_id_pk, String username, String password, String email, String phone_number, String address) {
+        this.user_id_pk = user_id_pk;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -24,11 +24,11 @@ public class User {
 
     //Getters & Setters
     public int getUser_id() {
-        return user_id;
+        return user_id_pk;
     }
 
     public void setUser_id(int user_id) {
-        this.user_id = user_id;
+        this.user_id_pk = user_id;
     }
 
     public String getUsername() {
@@ -75,7 +75,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "user_id_pk=" + user_id_pk +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
