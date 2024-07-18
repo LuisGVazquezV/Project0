@@ -1,4 +1,39 @@
 package com.revature.DAOs;
 
-public class PetDAO {
+import com.revature.models.Pet;
+import com.revature.utils.ConnectionUtil;
+
+import java.sql.*;
+import java.util.ArrayList;
+
+public class PetDAO implements PetDAOInterface {
+
+    @Override
+    public ArrayList<Pet> getPets() {
+
+            try (Connection conn = ConnectionUtil.getConnection()) {
+                String sql = "SELECT * FROM pets";
+                Statement s = conn.createStatement();
+                ResultSet rs = s.executeQuery(sql);
+                ArrayList<Pet> pets = new ArrayList<>();
+
+                while (rs.next()) {
+                    Pet p = new Pet(
+                            rs.getInt("pet_id_pk"),
+                            rs.getString("name"),
+                            rs.getString("breed"),
+                            rs.getString("age"),
+                            rs.getInt("age"),
+                            rs.getString("gender"),
+                            rs.getString("adoption_status"),
+                            rs.getString("description")
+                    );
+                    pets.add(p);
+                }
+                return pets;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        return null;
+    }
 }

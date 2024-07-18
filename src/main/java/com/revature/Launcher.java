@@ -30,6 +30,10 @@ public class Launcher {
 
         app.get("/users", uc.getUserHandler);
 
+        app.get("/pets", pc.getPetHandler);
+
+
+
 
 
 
