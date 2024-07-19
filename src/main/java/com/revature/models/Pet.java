@@ -1,43 +1,38 @@
 package com.revature.models;
 
+import com.revature.DAOs.UserDAO;
+import com.revature.DAOs.UserDAOInterface;
+
 public class Pet {
+
 
     private int pet_id_pk;
     private String name;
     private String species;
     private String breed;
     private int age;
-    private String gender;
-    private String adoption_status;
-    private String description;
+    private String health_status;
     private int user_id_fk;
-    private String adoption_date;
 
-    //Constructors
     public Pet() {
     }
 
-    public Pet(int pet_id_pk, String name, String species, String breed, int age, String gender, String adoption_status, String description, int user_id_fk, String adoption_date) {
+    public Pet(int pet_id_pk, String name, String species, String breed, int age, String health_status, int user_id_fk) {
         this.pet_id_pk = pet_id_pk;
         this.name = name;
         this.species = species;
         this.breed = breed;
         this.age = age;
-        this.gender = gender;
-        this.adoption_status = adoption_status;
-        this.description = description;
+        this.health_status = health_status;
         this.user_id_fk = user_id_fk;
-        this.adoption_date = adoption_date;
     }
 
-    //Setters & Getters
-
-    public int getPet_id() {
+    public int getPet_id_pk() {
         return pet_id_pk;
     }
 
-    public void setPet_id(int pet_id) {
-        this.pet_id_pk = pet_id;
+    public void setPet_id_pk(int pet_id_pk) {
+        this.pet_id_pk = pet_id_pk;
     }
 
     public String getName() {
@@ -72,48 +67,17 @@ public class Pet {
         this.age = age;
     }
 
-    public String getGender() {
-        return gender;
+    public String getHealth_status() {
+        return health_status;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getAdoption_status() {
-        return adoption_status;
-    }
-
-    public void setAdoption_status(String adoption_status) {
-        this.adoption_status = adoption_status;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setHealth_status(String health_status) {
+        this.health_status = health_status;
     }
 
     public int getUser_id_fk() {
         return user_id_fk;
     }
-
-    public void setUser_id_fk(int user_id_fk) {
-        this.user_id_fk = user_id_fk;
-    }
-
-    public String getAdoption_date() {
-        return adoption_date;
-    }
-
-    public void setAdoption_date(String adoption_date) {
-        this.adoption_date = adoption_date;
-    }
-
-    //toString
-
 
     @Override
     public String toString() {
@@ -123,16 +87,13 @@ public class Pet {
                 ", species='" + species + '\'' +
                 ", breed='" + breed + '\'' +
                 ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", adoption_status='" + adoption_status + '\'' +
-                ", description='" + description + '\'' +
+                ", health_status='" + health_status + '\'' +
                 ", user_id_fk=" + user_id_fk +
-                ", adoption_date='" + adoption_date + '\'' +
                 '}';
     }
 
-    public void setAdoptionStatus(String petStatus) {
+    public void setUser_id_fk(int user_id_fk) {
+        this.user_id_fk = user_id_fk;
     }
+
 }
-
-

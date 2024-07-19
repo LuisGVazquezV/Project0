@@ -6,8 +6,13 @@ import java.util.ArrayList;
 
 public interface UserDAOInterface {
 
-    public ArrayList<User> getUsers();
+    ArrayList<User> getUsers();
+
+    User getUserById(int id);
 
     User insertUser(User user);
 
+    boolean deleteUser(int id);
+
+    void updateUser(User user);
 }

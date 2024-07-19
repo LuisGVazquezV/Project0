@@ -1,5 +1,6 @@
 package com.revature;
 
+import com.revature.controllers.AuthController;
 import com.revature.controllers.PetController;
 import com.revature.controllers.UserController;
 import com.revature.utils.ConnectionUtil;
@@ -25,12 +26,19 @@ public class Launcher {
         //Instantiate Controllers
         UserController uc = new UserController();
         PetController pc = new PetController();
+        AuthController ac = new AuthController();
 
-        app.get("/users", uc.getUserHandler);
+        //handlers
 
-        app.get("/pets", pc.getPetHandler);
-
+        app.get("/users", uc.getUsersHandler);
         app.post("/users", uc.insertUserHandler);
+        app.delete("/users/{id}", uc.deleteUserHandler);
+        app.get("/pets", pc.getPetsHandler);
+        app.get("/pets/{id}", pc.getPetByIdHandler);
+        app.post("/pets", pc.insertPetHandler);
+        app.delete("/pets/{id}", pc.deletePetHandler);
+        app.patch("/pets/{id}", pc.updatePetHealthStatusHandler);
+        app.post("/login", ac.loginHandler);
 
 
     }//end of main
