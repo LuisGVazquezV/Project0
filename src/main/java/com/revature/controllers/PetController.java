@@ -6,6 +6,7 @@ import io.javalin.http.Handler;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PetController {
 
@@ -19,11 +20,13 @@ public class PetController {
     };
 
     // Handler for GET requests to /pets/{id}
+
     public Handler getPetByIdHandler = ctx -> {
-        int petId = Integer.parseInt(ctx.pathParam("id"));
-        Pet pet = ps.getPetById(petId);
+        int pet_id_pk = Integer.parseInt(ctx.pathParam("id"));
+        Pet pet = ps.getPetById(pet_id_pk);
+
         if (pet == null) {
-            ctx.status(404).result("Pet not found.");
+            ctx.status(400).result("Pet not found for the specified user.");
         } else {
             ctx.status(200).json(pet);
         }
@@ -58,15 +61,15 @@ public class PetController {
         if(AuthController.ses != null){
 
             int petId = Integer.parseInt(ctx.pathParam("id"));
+
             String newHealthStatus = ctx.body();
 
             try {
                 ps.updatePetHealthStatus(petId, newHealthStatus);
                 ctx.status(202); // Accepted
-                ctx.result("Pet health status of per with id " + petId + " has been updated to: " + newHealthStatus);
+                ctx.result("The health status of pet with id " + petId + " has been updated to: " + newHealthStatus);
             } catch (IllegalArgumentException e) {
                 ctx.status(400).result("Pet health status could not be updated.");
-                ctx.result(e.getMessage());
             }
         }else{
             ctx.status(401).result("Unauthorized");

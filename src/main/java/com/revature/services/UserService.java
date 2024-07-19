@@ -6,31 +6,34 @@ import com.revature.models.User;
 import java.util.ArrayList;
 
 public class UserService {
-
-    private final UserDAO uDAO = new UserDAO();
+    UserDAO uDAO = new UserDAO();
 
     public ArrayList<User> getUsers() {
         return uDAO.getUsers();
     }
 
-    public User getUserById(int id) {
-        return uDAO.getUserById(id);
-    }
-
     public User insertUser(User user) throws IllegalArgumentException {
-        if (user.getUsername() == null || user.getUsername().isEmpty()) {
-            throw new IllegalArgumentException("Username cannot be empty.");
+
+        if (user.getUsername() == null || user.getUsername().equals("")) {
+            throw new IllegalArgumentException("Username cannot be null or empty");
         }
-        if (user.getEmail() == null || user.getEmail().isEmpty()) {
-            throw new IllegalArgumentException("Email cannot be empty.");
+
+        if (user.getPassword() == null || user.getPassword().equals("")) {
+            throw new IllegalArgumentException("Password cannot be null or empty");
         }
-        if (user.getPassword() == null || user.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Password cannot be empty.");
+
+        if (user.getEmail() == null || user.getEmail().equals("")) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
         }
-        return uDAO.insertUser(user);
+
+        uDAO.insertUser(user);
+
+        return user;
     }
 
-    public boolean deleteUser(int id) {
-        return uDAO.deleteUser(id);
+
+    public boolean deleteUser(int userId) {
+
+        return uDAO.deleteUser(userId);
     }
 }

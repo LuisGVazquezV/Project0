@@ -20,13 +20,13 @@ public class PetDAO implements PetDAOInterface {
             while (rs.next()) {
                 Pet pet = new Pet(
                         rs.getInt("pet_id_pk"),
-                        rs.getString("name"),
                         rs.getString("species"),
                         rs.getString("breed"),
+                        rs.getString("name"),
                         rs.getInt("age"),
-                        rs.getString("health_status"),
-                        rs.getInt("user_id_fk")
-                );
+                        rs.getString("health_status")
+                                                );
+
                 pets.add(pet);
             }
             return pets;
@@ -45,23 +45,22 @@ public class PetDAO implements PetDAOInterface {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
-                UserDAO uDAO = new UserDAO();
-                User user = uDAO.getUserById(rs.getInt("pet_id_pk"));
+            while (rs.next()) {
 
-                return new Pet(
+                Pet pet = new Pet(
                         rs.getInt("pet_id_pk"),
-                        rs.getString("name"),
                         rs.getString("species"),
                         rs.getString("breed"),
+                        rs.getString("name"),
                         rs.getInt("age"),
-                        rs.getString("health_status"),
-                        rs.getInt("user_id_fk")
-                );
+                        rs.getString("health_status")
+
+                                                );
+                return pet;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Failed to get pet");
+            System.out.println("Failed to get pet by ID");
         }
         return null;
     }
@@ -70,20 +69,15 @@ public class PetDAO implements PetDAOInterface {
     @Override
     public Pet insertPet(Pet pet) {
         try (Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "INSERT INTO pets (name, species, breed, age, health_status, user_id_fk ) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            String sql = "INSERT INTO pets ( species, breed, name,  age, health_status) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, pet.getName());
             ps.setString(2, pet.getSpecies());
             ps.setString(3, pet.getBreed());
             ps.setInt(4, pet.getAge());
             ps.setString(5, pet.getHealth_status());
-            ps.setInt(6, pet.getUser_id_fk());
             ps.executeUpdate();
 
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                pet.setPet_id_pk(rs.getInt(1));
-            }
             return pet;
         } catch (SQLException e) {
             e.printStackTrace();

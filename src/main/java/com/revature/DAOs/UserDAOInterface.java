@@ -8,11 +8,8 @@ public interface UserDAOInterface {
 
     ArrayList<User> getUsers();
 
-    User getUserById(int id);
-
     User insertUser(User user);
 
     boolean deleteUser(int id);
 
-    void updateUser(User user);
 }
